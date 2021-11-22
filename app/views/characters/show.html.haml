@@ -1,0 +1,8 @@
+%p#notice= notice
+
+= render 'card', character: @character
+
+= link_to 'Edit', edit_character_path(@character)
+\|
+
+= link_to 'Return to the arena', fights_path, role: "button", class: "btn btn-primary active"

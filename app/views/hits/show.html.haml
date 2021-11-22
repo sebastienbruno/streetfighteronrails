@@ -1,0 +1,9 @@
+%p#notice= notice
+
+%p
+  %b Damage point:
+  = @hit.damage_point
+
+= link_to 'Edit', edit_hit_path(@hit)
+\|
+= link_to 'Back', hits_path

@@ -1,0 +1,26 @@
+<div class="fight-outer">
+    <div class="fight-inner">
+        <h1 style="text-align: center"> Select players </h1>
+        <div class="container">
+            <div class="row align-items-end ">
+                <div class="col">
+                    <img class="card-img-top" alt="<%= @new_fight.opponent1.name %>" src="<%= asset_url(@new_fight.opponent1.image.url) %>" />
+                    <h5 style="text-align: center"><%= @new_fight.opponent1.name %></h5>
+                </div>
+                <div class="col align-self-end">
+                    <%# @new_fight.opponent1.inspect %>
+                    <%= link_to 'Fight', run_fight_path(:id => @new_fight.id), role: "button", class: "btn btn-danger active"%> 
+                    <%= link_to 'Change players', edit_fight_path(:id => @new_fight.id), role: "button", class: "btn btn-primary active"%> 
+                </div>
+                <div class="col">
+                    <img class="card-img-top" alt="<%= @new_fight.opponent2.name %>" src="<%= asset_url(@new_fight.opponent2.image.url) %>" />
+                    <h5 style="text-align: center"><%= @new_fight.opponent2.name %></h5>
+                </div>
+            </div>
+            <div class="row align-items-end">
+                <%= link_to 'Create new player', new_character_path, role: "button", class: "btn btn-info active"%> 
+            </div>
+        </div>
+    </div>
+    <%= render 'history', fights: @fights %>
+</div>

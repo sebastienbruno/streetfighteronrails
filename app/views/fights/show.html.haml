@@ -1,0 +1,13 @@
+%p#notice= notice
+
+%p
+  %b Status:
+  = @fight.status
+  \|
+  = link_to 'Show '+@fight.opponent1.name, character_path(@fight.opponent1)
+  \|
+  = link_to 'Show '+@fight.opponent2.name, character_path(@fight.opponent2)
+
+= link_to 'Edit', edit_fight_path(@fight)
+\|
+= link_to 'Back', fights_path

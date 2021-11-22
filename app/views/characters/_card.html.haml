@@ -1,0 +1,30 @@
+- if @character.present?
+  .card{:style => "width: 18rem;"}
+    - if @character.image.present?
+      %img.card-img-top{:alt => @character.name, :src => asset_url(@character.image.url)}/
+    .card-body
+      %h5
+        %div
+          %div{:align => "left"}
+            = @character.name
+        - if @character.experience.present?
+          %div{:align => "right"}
+            XP
+            = @character.experience
+
+
+      - if @character.life.present?
+        %b Life:
+        .progress
+          .progress-bar.bg-success{"aria-valuemax" => "100", "aria-valuemin" => "0", "aria-valuenow" => @character.life, :role => "progressbar", :style => "width: " << @character.life.to_s << "%"}
+            = @character.life
+      - if @character.damage_attack.present?
+        %b Damage attack
+        .progress
+          .progress-bar.bg-danger{"aria-valuemax" => "10", "aria-valuemin" => "0", "aria-valuenow" => @character.damage_attack, :role => "progressbar", :style => "width: " << (@character.damage_attack*10).to_s << "%"}
+            = @character.damage_attack
+      - if @character.shield.present?
+        %b Shield
+        .progress
+          .progress-bar.bg-info{"aria-valuemax" => "10", "aria-valuemin" => "0", "aria-valuenow" => @character.shield, :role => "progressbar", :style => "width: " << (@character.shield*10).to_s << "%"}
+            = @character.shield
