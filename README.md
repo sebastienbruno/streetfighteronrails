@@ -10,9 +10,8 @@ The main services are :
 ## Table of contents
 
 - [Getting Started](#getting-started)
-- [Built With](#built-with)
-- [Versioning](#versioning)
 - [Authors](#authors)
+- [Next Features](#next-features)
 
 ## Getting Started
 
