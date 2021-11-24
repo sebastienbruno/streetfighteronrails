@@ -13,12 +13,3 @@
  *= require_tree .
  *= require_self
  */
-
- .brd {
-     border: 1px solid black;
- }
-
- style {
-    border: 1px dashed black;
-    display:block;
-  }

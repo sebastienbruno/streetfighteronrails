@@ -13,16 +13,15 @@
 ActiveRecord::Schema.define(version: 2021_11_22_110824) do
 
   create_table "characters", force: :cascade do |t|
-    t.string "name"
-    t.string "picture"
+    t.string "name", null: false
     t.integer "current_life"
-    t.integer "damage_attack"
-    t.integer "shield"
-    t.integer "experience"
+    t.integer "damage_attack", null: false
+    t.integer "shield", null: false
+    t.integer "experience", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "image_id"
-    t.integer "life"
+    t.integer "life", null: false
     t.index ["image_id"], name: "index_characters_on_image_id"
   end
 
@@ -50,13 +49,6 @@ ActiveRecord::Schema.define(version: 2021_11_22_110824) do
   end
 
   create_table "images", force: :cascade do |t|
-    t.string "name"
-    t.string "url"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "pictures", force: :cascade do |t|
     t.string "name"
     t.string "url"
     t.datetime "created_at", precision: 6, null: false

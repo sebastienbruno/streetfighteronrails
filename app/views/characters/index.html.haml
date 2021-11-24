@@ -1,24 +1,22 @@
 %h1 Listing characters
 
-%table
+%table.table
   %thead
     %tr
-      %th Name
-      %th Picture
-      %th Current life
-      %th Damage attack
-      %th Shield
-      %th Experience
-      %th
-      %th
-      %th
+      %th{:scope => "col"} Name
+      %th{:scope => "col"} Life
+      %th{:scope => "col"} Damage attack
+      %th{:scope => "col"} Shield
+      %th{:scope => "col"} Experience
+      %th{:scope => "col"}
+      %th{:scope => "col"}
+      %th{:scope => "col"}
 
   %tbody
     - @characters.each do |character|
       %tr
-        %td= character.name
-        %td= character.picture
-        %td= character.current_life
+        %th{:scope => "row"}= character.name
+        %td= character.life
         %td= character.damage_attack
         %td= character.shield
         %td= character.experience

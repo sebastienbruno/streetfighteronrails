@@ -2,22 +2,118 @@
     <div class="fight-inner">
         <h1 style="text-align: center"> Select players </h1>
         <div class="container">
-            <div class="row align-items-end ">
+            <div class="row align-items-center ">
                 <div class="col">
-                    <img class="card-img-top" alt="<%= @new_fight.opponent1.name %>" src="<%= asset_url(@new_fight.opponent1.image.url) %>" />
-                    <h5 style="text-align: center"><%= @new_fight.opponent1.name %></h5>
-                </div>
-                <div class="col align-self-end">
-                    <%# @new_fight.opponent1.inspect %>
-                    <%= link_to 'Fight', run_fight_path(:id => @new_fight.id), role: "button", class: "btn btn-danger active"%> 
-                    <%= link_to 'Change players', edit_fight_path(:id => @new_fight.id), role: "button", class: "btn btn-primary active"%> 
+                    <%# render 'character/card', character: @new_fight.opponent1 %>
+
+                    <%# /!\ DRY code in character/card but how to use it ? %>
+                    <% if @new_fight.opponent1.present? %>
+                    <div class="card" style="width: 18rem;">
+                        <% if @new_fight.opponent1.image.present? %>
+                        <img alt="<%= @new_fight.opponent1.name %>" class="card-img-top" src="<%= asset_url(@new_fight.opponent1.image.url) %>"/>
+                        <% end %>
+                        <div class="card-body">
+                        <h5>
+                            <div>
+                            <div style="text-align: left">
+                                <%= @new_fight.opponent1.name %>
+                            </div>
+                            </div>
+                            <% if @new_fight.opponent1.experience.present? %>
+                            <div style="text-align: right">
+                                XP
+                                <%= @new_fight.opponent1.experience %>
+                            </div>
+                            <% end %>
+                        </h5>
+                        <% if @new_fight.opponent1.life.present? %>
+                            <b>Life:</b>
+                            <div class="progress">
+                            <div aria-valuemax="100" aria-valuemin="0" aria-valuenow="<%= @new_fight.opponent1.life %>" class="progress-bar bg-success" role="progressbar" style="<%= "width: " << @new_fight.opponent1.life.to_s << "%" %>">
+                                <%= @new_fight.opponent1.life %>
+                            </div>
+                            </div>
+                        <% end %>
+                        <% if @new_fight.opponent1.damage_attack.present? %>
+                            <b>Damage attack</b>
+                            <div class="progress">
+                            <div aria-valuemax="10" aria-valuemin="0" aria-valuenow="<%= @new_fight.opponent1.damage_attack %>" class="progress-bar bg-danger" role="progressbar" style="<%= "width: " << (@new_fight.opponent1.damage_attack*10).to_s << "%" %>">
+                                <%= @new_fight.opponent1.damage_attack %>
+                            </div>
+                            </div>
+                        <% end %>
+                        <% if @new_fight.opponent1.shield.present? %>
+                            <b>Shield</b>
+                            <div class="progress">
+                            <div aria-valuemax="10" aria-valuemin="0" aria-valuenow="<%= @new_fight.opponent1.shield %>" class="progress-bar bg-info" role="progressbar" style="<%= "width: " << (@new_fight.opponent1.shield*10).to_s << "%" %>">
+                                <%= @new_fight.opponent1.shield %>
+                            </div>
+                            </div>
+                        <% end %>
+                        </div>
+                    </div>
+                    <% end %>
+                    <%# End of character/card %>
+
                 </div>
                 <div class="col">
-                    <img class="card-img-top" alt="<%= @new_fight.opponent2.name %>" src="<%= asset_url(@new_fight.opponent2.image.url) %>" />
-                    <h5 style="text-align: center"><%= @new_fight.opponent2.name %></h5>
+                    <%= link_to 'Fight', run_fight_path(:id => @new_fight.id), role: "button", class: "btn btn-danger" %>
+                </div>
+                <div class="col">
+                    <%# render 'character/card', character: @new_fight.opponent2 %>
+                    <%# /!\ DRY code in character/card but how to use it ? %>
+                    <% if @new_fight.opponent2.present? %>
+                    <div class="card" style="width: 18rem;">
+                        <% if @new_fight.opponent2.image.present? %>
+                        <img alt="<%= @new_fight.opponent2.name %>" class="card-img-top" src="<%= asset_url(@new_fight.opponent2.image.url) %>"/>
+                        <% end %>
+                        <div class="card-body">
+                        <h5>
+                            <div>
+                            <div align="left">
+                                <%= @new_fight.opponent2.name %>
+                            </div>
+                            </div>
+                            <% if @new_fight.opponent2.experience.present? %>
+                            <div align="right">
+                                XP
+                                <%= @new_fight.opponent2.experience %>
+                            </div>
+                            <% end %>
+                        </h5>
+                        <% if @new_fight.opponent2.life.present? %>
+                            <b>Life:</b>
+                            <div class="progress">
+                            <div aria-valuemax="100" aria-valuemin="0" aria-valuenow="<%= @new_fight.opponent2.life %>" class="progress-bar bg-success" role="progressbar" style="<%= "width: " << @new_fight.opponent2.life.to_s << "%" %>">
+                                <%= @new_fight.opponent2.life %>
+                            </div>
+                            </div>
+                        <% end %>
+                        <% if @new_fight.opponent2.damage_attack.present? %>
+                            <b>Damage attack</b>
+                            <div class="progress">
+                            <div aria-valuemax="10" aria-valuemin="0" aria-valuenow="<%= @new_fight.opponent2.damage_attack %>" class="progress-bar bg-danger" role="progressbar" style="<%= "width: " << (@new_fight.opponent2.damage_attack*10).to_s << "%" %>">
+                                <%= @new_fight.opponent2.damage_attack %>
+                            </div>
+                            </div>
+                        <% end %>
+                        <% if @new_fight.opponent2.shield.present? %>
+                            <b>Shield</b>
+                            <div class="progress">
+                            <div aria-valuemax="10" aria-valuemin="0" aria-valuenow="<%= @new_fight.opponent2.shield %>" class="progress-bar bg-info" role="progressbar" style="<%= "width: " << (@new_fight.opponent2.shield*10).to_s << "%" %>">
+                                <%= @new_fight.opponent2.shield %>
+                            </div>
+                            </div>
+                        <% end %>
+                        </div>
+                    </div>
+                    <% end %>
+
+
                 </div>
             </div>
             <div class="row align-items-end">
+                <%= link_to 'Change players', edit_fight_path(:id => @new_fight.id), role: "button", class: "btn btn-primary active"%> 
                 <%= link_to 'Create new player', new_character_path, role: "button", class: "btn btn-info active"%> 
             </div>
         </div>

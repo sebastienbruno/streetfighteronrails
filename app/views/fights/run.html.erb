@@ -1,8 +1,8 @@
-<h1> Fight <%= @fight.status %><h1>
+<h1> Fight over<h1>
 <div>
     <p> The winner is 
         <%= @fight.opponent1.name if @fight.winner == "opponent1" %>
-        <%= @fight.opponent1.name if @fight.winner == "opponent2" %>
+        <%= @fight.opponent2.name if @fight.winner == "opponent2" %>
     </p>
 </div>
 <div>

@@ -7,12 +7,15 @@ class FightsController < ApplicationController
 
   # GET /fights or /fights.json
   def index
+    puts "Find all where status not New"
     @fights = Fight.all
-    if @fights.where(:status => STATE_NEW).length == 0
+    if @fights.where(:status => STATE_NEW).size == 0
       current_fight = Fight.create(status: STATE_NEW, opponent1: Character.first, opponent2: Character.last)
       current_fight.save
+      @new_fight = current_fight
+    else
+      @new_fight = Fight.all.where(status: STATE_NEW).first
     end
-    @new_fight = @fights.find_by(status: STATE_NEW)
   end
 
   # GET /fights/1 or /fights/1.json
@@ -68,12 +71,24 @@ class FightsController < ApplicationController
   def run
     @fight.update(status: STATE_RUNNING)
 
-    # The fight is running
-    winner = "opponent2"
+    # The fight is running... Should I put this part in the Model ?
+    if rand(2) == 1 then
+      winner = "opponent2"
+      @fight.opponent2.experience += 10
+      @fight.opponent2.save
+    else
+      winner = "opponent1"
+      @fight.opponent1.experience += 10
+      @fight.opponent1.save
+    end
 
     # The fight is done
     @fight.update(status: STATE_DONE, winner: winner)
-    puts 'New fight done'
+
+    # Initialisation next fight
+    current_fight = Fight.create(status: STATE_NEW, opponent1: @fight.opponent1, opponent2: @fight.opponent2)
+    current_fight.save
+
   end
 
   private

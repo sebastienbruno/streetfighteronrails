@@ -6,23 +6,28 @@
         - @character.errors.full_messages.each do |message|
           %li= message
 
-  .field
-    = f.label :name
-    = f.text_field :name
-  .field
-    = f.label :picture
-    = f.select :image_id, Image.pluck(:name, :id)
-  .field
-    = f.label :life
-    = f.number_field :life
-  .field
-    = f.label :damage_attack
-    = f.number_field :damage_attack
-  .field
-    = f.label :shield
-    = f.number_field :shield
-  .field
-    = f.label :experience
-    = f.number_field :experience
-  .actions
-    = f.submit 'Save'
+
+
+  .form-row
+    .col-md-3.mb-3
+      = f.label :name, "Name"
+      = f.text_field :name, :placeholder => "Name", :required => true, :type => "text", :class => "form-control"
+    .col-md-2.mb-3
+      .input-group
+        = f.label :image, "Picture"
+        = f.select :image_id, Image.pluck(:name, :id)
+            
+  .form-row
+    .col-md-2.mb-3
+      = f.label :life, "Life"
+      = f.number_field :life, :class => "form-control", :min => 50, :max => 100, :required => true, :type => "number"
+    .col-md-2.mb-3
+      = f.label :damage_attack, "Damage attack"
+      = f.number_field :damage_attack, :class => "form-control", :min => 0, :max => 10, :required => true, :type => "number"
+    .col-md-2.mb-3
+      = f.label :shield, "Shield"
+      = f.number_field :shield, :class => "form-control", :min => 0, :max => 10, :required => true, :type => "number"
+    .col-md-2.mb-3
+      = f.label :shield, "Experience"
+      = f.number_field :experience, :class => "form-control", :min => 0, :max => 20, :required => true, :type => "number"
+  %button.btn.btn-primary{:type => "submit"} Submit form
