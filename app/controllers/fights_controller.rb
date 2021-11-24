@@ -7,10 +7,13 @@ class FightsController < ApplicationController
 
   # GET /fights or /fights.json
   def index
-    puts "Find all where status not New"
     @fights = Fight.all
     if @fights.where(:status => STATE_NEW).size == 0
-      current_fight = Fight.create(status: STATE_NEW, opponent1: Character.first, opponent2: Character.last)
+      if @fights.empty?
+        current_fight = Fight.create(status: STATE_NEW, opponent1: Character.first, opponent2: Character.last)
+      else
+        current_fight = Fight.create(status: STATE_NEW, opponent1: @fights.last.opponent1, opponent2: @fights.last.opponent2)
+        end
       current_fight.save
       @new_fight = current_fight
     else
@@ -84,10 +87,6 @@ class FightsController < ApplicationController
 
     # The fight is done
     @fight.update(status: STATE_DONE, winner: winner)
-
-    # Initialisation next fight
-    current_fight = Fight.create(status: STATE_NEW, opponent1: @fight.opponent1, opponent2: @fight.opponent2)
-    current_fight.save
 
   end
 

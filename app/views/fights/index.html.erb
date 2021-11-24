@@ -8,7 +8,7 @@
 
                     <%# /!\ DRY code in character/card but how to use it ? %>
                     <% if @new_fight.opponent1.present? %>
-                    <div class="card" style="width: 18rem;">
+                    <div class="card figths-card-img">
                         <% if @new_fight.opponent1.image.present? %>
                         <img alt="<%= @new_fight.opponent1.name %>" class="card-img-top" src="<%= asset_url(@new_fight.opponent1.image.url) %>"/>
                         <% end %>
@@ -63,7 +63,7 @@
                     <%# render 'character/card', character: @new_fight.opponent2 %>
                     <%# /!\ DRY code in character/card but how to use it ? %>
                     <% if @new_fight.opponent2.present? %>
-                    <div class="card" style="width: 18rem;">
+                    <div class="card figths-card-img">
                         <% if @new_fight.opponent2.image.present? %>
                         <img alt="<%= @new_fight.opponent2.name %>" class="card-img-top" src="<%= asset_url(@new_fight.opponent2.image.url) %>"/>
                         <% end %>
