@@ -1,76 +1,54 @@
-Ce repo contient le squelette d'une application à compléter dans le cadre du processus de recrutement des développeurs.
+# Street Fighter on RoR
 
-Plus d'infos à propos du poste de développeur chez Captain Contrat sur [notre page jobs](https://jobs.captaincontrat.com/)
+This application is a remake of Street Fighter developped with RoR.
+The main services are : 
+* CRUD for characters
+* Select Fighters and Fight
+* See the fights history
+* Administration of images (pictures of character)
 
-# Captain Challenge
+## Table of contents
 
-Bienvenue jeune moussaillon !
+- [Getting Started](#getting-started)
+- [Built With](#built-with)
+- [Versioning](#versioning)
+- [Authors](#authors)
 
-Pour intégrer le navire Captain Contrat, tu dois créer une arène où deux héros pourront s'affronter !
+## Getting Started
 
-Pour ce faire, nous avons mis à ta disposition une appli vide qu'il te faudra compléter.
+These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. 
+All of the instructions are used with PowerShell (PSVersion 5.1.19041.610)
 
-## Résultat attendu
+### Prerequisities
 
-Le but de ce challenge est de tester ta capacité à monter une petite application [dans le respect des bonnes pratiques](https://medium.com/captain-contrat-tech).  
-On te propose quatre étapes clés, avec des bonus facultatifs.
+#### Ruby
 
-Nous nous intéresserons tout particulièrement aux choix de conception que tu feras, comment tu abordes les fonctionnalités à développer et ta connaissance des outils que tu utilises.
+In order to install and run the application you'll need ruby 3.0.0 or later
+* [Ruby](https://www.ruby-lang.org/en/)
 
-## Tes armes
+#### Database
+No need to install a database.
 
-- Ruby
-- Rails
-- git
+### Installation 
 
-## Étapes
+Clone the project
+1. <code>git clone https://github.com/sebastienbruno/streetfighteronrails.git</code>
+2. <code>cd streetfigheronrails</code>
 
-### 0. ~~Forker~~ Cloner ce repo
+### Usage with bundle 
 
-Pour commencer, il faudra cloner (ne *PAS* forker) ce repo afin d'y ajouter tes modifications.
+3. <code>bundle</code>
+4. <code>bundle exec rails webpacker:install</code>
+5. <code>rails server</code>
+6. Once the application is running you can visit http://localhost:3000 (or your env_url:env_port) to see the interface.
 
-### 1. Page d'accueil statique
+## Authors
 
-C'est l'accueil de l'arène, d'où nous pourrons lancer les combats.  
-Le but est donc de modifier (ou supprimer/remplacer) la page d'accueil existante.
+* **Sebastien BRUNO**
 
-Bonus :
+## Next features
 
-- Un petit texte d'introduction de ton cru. C'est plus fun.
-- Joli design (mais n'y perd pas trop de temps non plus)
-
-### 2. Pouvoir créer un personnage
-
-Données requises :
-
-- Nom
-- Points de vie
-- Points d'attaque
-
-Assure-toi qu'il n'y ait pas de grand déséquilibre entre combattants.  
-
-Bonus :
-
-- L'arène n'est pas vide au premier démarrage de l'appli.
-- Les persos ont une photo de profil (ou de face)
-- Crud complet des personnages
-- Ajouter d'autres caractéristiques de ton choix aux personnages
-
-### 3. READY? FIGHT!
-
-Pouvoir choisir deux personnages et les faire combattre, puis afficher le gagnant avec un récapitulatif du combat.
-
-Bonus :
-
-- Historique des combats qui ont eu lieu
-- Ajout de points d'expérience (mais pourquoi faire ?)
-- Statistiques des combats : taux de victoire par perso et tout ça
-
-### 4. Des armes
-
-Pouvoir assigner une arme aux personnages avant le combat.
-
-Bonus :
-
-- Il n'y a pas que les armes dans la vie, il y a des boucliers aussi
-- Pouvoir utiliser plusieurs équipements
+* Add unit test, end-to-end test
+* Use character custumization (damage, shield, experience) during the fight
+* Add arms selection
+* Add a caching system
