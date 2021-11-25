@@ -38,8 +38,10 @@ Clone the project
 
 3. <code>bundle</code>
 4. <code>bundle exec rails webpacker:install</code>
-5. <code>rails server</code>
-6. Once the application is running you can visit http://localhost:3000 (or your env_url:env_port) to see the interface.
+5. <code>rails db:migrate</code>
+6. <code>rails db:seed</code>
+7. <code>rails server</code>
+8. Once the application is running you can visit http://localhost:3000 (or your env_url:env_port) to see the interface.
 
 ## Authors
 
